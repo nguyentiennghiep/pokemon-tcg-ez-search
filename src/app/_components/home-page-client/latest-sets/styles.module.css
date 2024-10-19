@@ -1,0 +1,69 @@
+.latestSets {
+  padding: 20px;
+}
+
+.latestSets h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.setsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.loadingSpinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px; /* Adjust height as needed */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.paginationButton {
+  margin: 0 5px;
+  padding: 10px;
+  border: 2px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+}
+
+.paginationButton:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.paginationButton:not(:disabled):hover {
+  background-color: #ccc;
+  transform: scale(1.1);
+}
+
+.paginationInput {
+  width: 50px;
+  margin: 0 10px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.pagination span {
+  font-size: 16px;
+}

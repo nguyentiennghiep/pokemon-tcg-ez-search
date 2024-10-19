@@ -1,0 +1,15 @@
+.highestPricedCards {
+  padding: 20px;
+}
+
+.highestPricedCards h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.cardGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
