@@ -1,6 +1,13 @@
 'use client';
 
-import { useEffect, useState, useRef, useCallback, LegacyRef } from 'react';
+import {
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  LegacyRef,
+  Suspense,
+} from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { fetchFromApi } from '@/app/utils/api';
@@ -12,14 +19,14 @@ import Card from '@/app/_components/card';
 import { ClipLoader } from 'react-spinners';
 import styles from './styles.module.css'; // Import CSS module
 
-const SearchPage: React.FC = () => {
+const SearchPageContent: React.FC = () => {
   const [cards, setCards] = useState<PokemonCard[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [loadingMore, setLoadingMore] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(1); // Add state for pagination
-  const [endOfCards, setEndOfCards] = useState<boolean>(false); // State to track if all cards have been loaded
-  const [newSearchQuery, setNewSearchQuery] = useState<string>(''); // Add state for new search query
-  const [prevSearchQuery, setPrevSearchQuery] = useState<string>(''); // Add state for previous search query
+  const [page, setPage] = useState<number>(1);
+  const [endOfCards, setEndOfCards] = useState<boolean>(false);
+  const [newSearchQuery, setNewSearchQuery] = useState<string>('');
+  const [prevSearchQuery, setPrevSearchQuery] = useState<string>('');
   const observer = useRef<IntersectionObserver | null>(null);
   const searchParams = useSearchParams();
   const query = searchParams?.get('query');
@@ -28,25 +35,25 @@ const SearchPage: React.FC = () => {
   useEffect(() => {
     const fetchCards = async () => {
       if (query) {
-        setLoading(true); // Set loading to true at the start of fetching
+        setLoading(true);
         try {
           const cardsData: CardsResponse = await fetchFromApi('cards', {
-            q: `name:*${query}*`, // Use wildcard search
+            q: `name:*${query}*`,
             orderBy: '-cardmarket.prices.averageSellPrice',
             pageSize: '20',
             page: page.toString(),
           });
 
           if (page === 1) {
-            setCards(cardsData.data); // Set cards state to the new results
+            setCards(cardsData.data);
           } else {
             setCards((prevCards) => [...prevCards, ...cardsData.data]);
           }
 
           if (cardsData.data.length < 20) {
-            setEndOfCards(true); // No more cards to load
+            setEndOfCards(true);
           } else {
-            setEndOfCards(false); // More cards to load
+            setEndOfCards(false);
           }
         } catch (error) {
           console.error('Error fetching cards:', error);
@@ -83,11 +90,11 @@ const SearchPage: React.FC = () => {
 
   const handleNewSearchClick = () => {
     if (newSearchQuery.trim()) {
-      setCards([]); // Clear cards state
+      setCards([]);
       setPage(1);
       setEndOfCards(false);
-      setLoading(true); // Set loading to true for new search
-      setPrevSearchQuery(newSearchQuery); // Update previous search query
+      setLoading(true);
+      setPrevSearchQuery(newSearchQuery);
       router.push(`/search?query=${encodeURIComponent(newSearchQuery)}`);
     }
   };
@@ -147,8 +154,8 @@ const SearchPage: React.FC = () => {
                   largeImageSrc={card.images.large}
                   altText={card.name}
                   cardName={card.name}
-                  series={card.set.series} // Pass series prop
-                  setName={card.set.name} // Pass setName prop
+                  series={card.set.series}
+                  setName={card.set.name}
                   averageSellPrice={card.cardmarket?.prices?.averageSellPrice}
                   marketUrl={card.cardmarket?.url}
                 />
@@ -162,8 +169,8 @@ const SearchPage: React.FC = () => {
                 largeImageSrc={card.images.large}
                 altText={card.name}
                 cardName={card.name}
-                series={card.set.series} // Pass series prop
-                setName={card.set.name} // Pass setName prop
+                series={card.set.series}
+                setName={card.set.name}
                 averageSellPrice={card.cardmarket?.prices?.averageSellPrice}
                 marketUrl={card.cardmarket?.url}
               />
@@ -177,6 +184,17 @@ const SearchPage: React.FC = () => {
         </div>
       )}
     </div>
+  );
+};
+
+// Wrap SearchPageContent with Suspense
+const SearchPage: React.FC = () => {
+  return (
+    <Suspense
+      fallback={<ClipLoader size={50} color={'#123ABC'} loading={true} />}
+    >
+      <SearchPageContent />
+    </Suspense>
   );
 };
 
