@@ -58,7 +58,7 @@ const fetchSetCards = async (
 const SetPageClient: React.FC<SetPageClientProps> = ({ initialSet }) => {
   const params = useParams();
   const router = useRouter();
-  const { setid } = params;
+  const setid  = params?.setid;
   const [set, setSet] = useState<PokemonSet | null>(initialSet);
   const [cards, setCards] = useState<PokemonCard[]>([]);
   const [rarities, setRarities] = useState<string[]>([]);

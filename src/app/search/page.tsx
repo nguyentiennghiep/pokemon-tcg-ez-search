@@ -22,7 +22,7 @@ const SearchPage: React.FC = () => {
   const [prevSearchQuery, setPrevSearchQuery] = useState<string>(''); // Add state for previous search query
   const observer = useRef<IntersectionObserver | null>(null);
   const searchParams = useSearchParams();
-  const query = searchParams.get('query');
+  const query = searchParams?.get('query');
   const router = useRouter();
 
   useEffect(() => {
