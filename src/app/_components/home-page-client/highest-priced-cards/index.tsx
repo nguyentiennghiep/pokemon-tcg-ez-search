@@ -23,6 +23,7 @@ const HighestPricedCards: React.FC<HighestPricedCardsProps> = ({
             cardName={card.name}
             series={card.set.series} // Pass series prop
             setName={card.set.name} // Pass setName prop
+            setId={card.set.id}
             averageSellPrice={card.cardmarket.prices.averageSellPrice}
             marketUrl={card.cardmarket.url} // Pass market URL prop
           />

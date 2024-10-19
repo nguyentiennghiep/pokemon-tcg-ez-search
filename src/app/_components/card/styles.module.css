@@ -97,4 +97,6 @@
 .setName {
   color: #555;
   margin-top: 5px;
+  cursor: pointer; /* Change cursor to pointer on hover */
+  color: #0070f3;
 }

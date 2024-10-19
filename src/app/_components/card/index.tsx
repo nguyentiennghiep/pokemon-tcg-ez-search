@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ClipLoader } from 'react-spinners'; // Import the loading spinner
 import styles from './styles.module.css';
+import { useRouter } from 'next/navigation';
 
 interface CardProps {
   imageSrc: string;
@@ -16,6 +17,7 @@ interface CardProps {
   averageSellPrice: number;
   setName?: string; // Make setName optional
   marketUrl: string; // Add market URL prop
+  setId?: string;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -27,13 +29,18 @@ const Card: React.FC<CardProps> = ({
   averageSellPrice,
   setName,
   marketUrl,
+  setId
 }) => {
   const [isOverlayVisible, setOverlayVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true); // State for loading spinner
-
+  const router = useRouter()
   const handleImageClick = () => {
     setOverlayVisible(true);
     setIsLoading(true); // Show spinner when overlay is opened
+  };
+
+  const handleSetNameClick = (setId?:string ) => {
+    if (setId) router.push(`/set/${encodeURIComponent(setId)}`);
   };
 
   const handleCloseOverlay = () => {
@@ -52,7 +59,7 @@ const Card: React.FC<CardProps> = ({
       <p className={styles.cardName}>{cardName}</p>
       {series && <p className={styles.series}>Series: {series}</p>}{' '}
       {/* Only show if series has value */}
-      {setName && <p className={styles.setName}>Set: {setName}</p>}{' '}
+      {setName && <p className={styles.setName} onClick={()=>handleSetNameClick(setId)}>Set: {setName}</p>}{' '}
       {/* Only show if setName has value */}
       <p className={styles.price}>
         <a href={marketUrl} target='_blank' rel='noopener noreferrer'>
