@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useEffect, useState, useRef, useCallback, LegacyRef } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -180,4 +181,10 @@ const SearchPage: React.FC = () => {
   );
 };
 
-export default SearchPage;
+const SearchPageWrapper: React.FC = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <SearchPage />
+  </Suspense>
+);
+
+export default SearchPageWrapper;

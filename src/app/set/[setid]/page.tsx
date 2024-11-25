@@ -21,3 +21,15 @@ export default async function SetPage({ params }: SetPageProps) {
 
   return <SetPageClient initialSet={initialSet} />;
 }
+
+// Implement the generateStaticParams function
+export async function generateStaticParams() {
+  // Fetch all possible set IDs
+  const response = await fetchFromApi('sets'); // Adjust the endpoint if necessary
+  const sets = response.data;
+
+  // Return an array of params objects
+  return sets.map((set: { id: string }) => ({
+    setid: set.id,
+  }));
+}
