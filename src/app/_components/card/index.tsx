@@ -71,6 +71,7 @@ const Card: React.FC<CardProps> = ({
               </div>
             )}
             <Image
+              className={styles.overlayImg}
               src={largeImageSrc}
               alt={altText}
               width={490}

@@ -72,6 +72,11 @@
   text-align: center;
 }
 
+.overlayImg{
+  width: 490px !important;
+  height: 684px !important;
+}
+
 .closeButton {
   position: absolute;
   top: -15px;
