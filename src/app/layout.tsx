@@ -48,7 +48,7 @@ export default function RootLayout({
         </header>
         <section className='banner'>
           <Image
-            src='/banner.jpg'
+            src='https://nguyentiennghiep.github.io/pokemon-tcg-ez-search/banner.jpg'
             alt='Pokémon TCG Banner'
             layout='responsive'
             width={1920}
