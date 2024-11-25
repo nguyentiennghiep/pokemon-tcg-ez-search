@@ -32,10 +32,10 @@ export default function RootLayout({
           <nav>
             <ul>
               <li>
-                <a href='/'>Home</a>
+                <a href='/pokemon-tcg-ez-search'>Home</a>
               </li>
               <li>
-                <a href='/set'>Series</a>
+                <a href='/pokemon-tcg-ez-search/set'>Series</a>
               </li>
               <li>
                 <a href='#'>About</a>
