@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { useEffect, useState, useRef, useCallback, LegacyRef } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { fetchFromApi } from '@/app/utils/api';
+import { fetchFromApi } from '@/utils/api';
 import {
   Card as PokemonCard,
   CardsResponse,

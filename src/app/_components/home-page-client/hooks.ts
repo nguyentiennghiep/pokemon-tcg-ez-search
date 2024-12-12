@@ -6,7 +6,7 @@ import {
   Card as PokemonCard,
   CardsResponse,
 } from '../sets/types';
-import { fetchFromApi } from '@/app/utils/api';
+import { fetchFromApi } from '@/utils/api';
 
 export const useHomePageClient = () => {
   const [setsData, setSetsData] = useState<PokemonSet[]>([]);

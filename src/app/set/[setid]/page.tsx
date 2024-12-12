@@ -1,5 +1,5 @@
 import SetPageClient from './setPageClient';
-import { fetchFromApi } from '@/app/utils/api';
+import { fetchFromApi } from '@/utils/api';
 import { PokemonSet } from '@/app/_components/sets/types';
 
 interface SetPageProps {

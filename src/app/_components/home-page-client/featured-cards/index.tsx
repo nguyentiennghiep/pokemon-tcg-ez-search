@@ -84,7 +84,7 @@ const FeaturedCards: React.FC<FeaturedCardsProps> = ({
                 largeImageSrc={card.images.large}
                 altText={card.name}
                 cardName={card.name}
-                averageSellPrice={card.cardmarket.prices.averageSellPrice}
+                averageSellPrice={card.cardmarket?.prices?.averageSellPrice}
                 marketUrl={card.cardmarket.url} // Pass market URL prop
               />
             ))}

@@ -10,7 +10,7 @@ import {
   CardsResponse,
 } from '@/app/_components/sets/types';
 import Card from '@/app/_components/card';
-import { fetchFromApi } from '@/app/utils/api';
+import { fetchFromApi } from '@/utils/api';
 import { ClipLoader } from 'react-spinners'; // Import the loading spinner
 
 interface SetPageClientProps {

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { fetchFromApi } from '@/app/utils/api';
+import { fetchFromApi } from '@/utils/api';
 import { PokemonSet } from '@/app/_components/sets/types';
 import Sets from '@/app/_components/sets';
 import styles from './styles.module.css';
