@@ -4,11 +4,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState, useRef, useCallback, LegacyRef } from 'react';
 import Image from 'next/image';
 import styles from './styles.module.css';
-import {
-  PokemonSet,
-  Card as PokemonCard,
-  CardsResponse,
-} from '@/_components/sets/types';
+import { PokemonSet, Card as PokemonCard, CardsResponse } from '@/types/types';
 import Card from '@/_components/card';
 import { fetchFromApi } from '@/utils/api';
 import { ClipLoader } from 'react-spinners'; // Import the loading spinner

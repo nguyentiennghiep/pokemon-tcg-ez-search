@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { PokemonSet } from '../../sets/types';
+import { PokemonSet } from '../../../types/types';
 
 export const useFeaturedCards = (
   selectedSet: PokemonSet | null,

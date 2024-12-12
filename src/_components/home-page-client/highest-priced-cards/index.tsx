@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card as PokemonCard } from '../../sets/types';
+import { Card as PokemonCard } from '../../../types/types';
 import Card from '../../card';
 import styles from './styles.module.css'; // Import CSS module
 

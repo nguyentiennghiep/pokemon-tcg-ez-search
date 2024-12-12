@@ -1,5 +1,5 @@
 import React from 'react';
-import { PokemonSet, Card as PokemonCard } from '../../sets/types';
+import { PokemonSet, Card as PokemonCard } from '../../../types/types';
 import { ClipLoader } from 'react-spinners';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

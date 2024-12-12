@@ -5,7 +5,7 @@ import {
   SetsResponse,
   Card as PokemonCard,
   CardsResponse,
-} from '../sets/types';
+} from '../../types/types';
 import { fetchFromApi } from '@/utils/api';
 
 export const useHomePageClient = () => {

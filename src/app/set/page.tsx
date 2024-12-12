@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { fetchFromApi } from '@/utils/api';
-import { PokemonSet } from '@/_components/sets/types';
+import { PokemonSet } from '@/types/types';
 import Sets from '@/_components/sets';
 import styles from './styles.module.css';
 import { ClipLoader } from 'react-spinners'; // Import the loading spinner
