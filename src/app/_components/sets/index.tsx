@@ -33,7 +33,7 @@ const Sets: React.FC<SetsProps> = ({
         <p>Release Date: {releaseDate}</p>
       </div>
       {showLink && (
-        <a href={`/set/${id}`} className={styles.link}>
+        <a href={`/pokemon-tcg-ez-search/set/${id}`} className={styles.link}>
           View Set Details
           <FontAwesomeIcon icon={faArrowRight} className={styles.linkIcon} />
         </a>
