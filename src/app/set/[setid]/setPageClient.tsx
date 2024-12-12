@@ -8,8 +8,8 @@ import {
   PokemonSet,
   Card as PokemonCard,
   CardsResponse,
-} from '@/app/_components/sets/types';
-import Card from '@/app/_components/card';
+} from '@/_components/sets/types';
+import Card from '@/_components/card';
 import { fetchFromApi } from '@/utils/api';
 import { ClipLoader } from 'react-spinners'; // Import the loading spinner
 

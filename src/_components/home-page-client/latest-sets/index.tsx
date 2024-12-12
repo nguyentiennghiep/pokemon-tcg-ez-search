@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Sets from '../../sets';
 import styles from './styles.module.css'; // Import CSS module
+import { useLatestSets } from './hooks';
 
 interface LatestSetsProps {
   currentSets: PokemonSet[];
@@ -30,34 +31,18 @@ const LatestSets: React.FC<LatestSetsProps> = ({
   setInputPage,
   handleSetClick,
 }) => {
-  const handlePageInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setInputPage(event.target.value);
-  };
-
-  const handlePageInputBlur = () => {
-    const page = Number(inputPage);
-    if (page > 0 && page <= totalPages) {
-      setCurrentPage(page);
-    } else {
-      setInputPage(currentPage.toString());
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-      setInputPage((currentPage - 1).toString());
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-      setInputPage((currentPage + 1).toString());
-    }
-  };
+  const {
+    handlePageInputChange,
+    handlePageInputBlur,
+    handlePrevPage,
+    handleNextPage,
+  } = useLatestSets(
+    currentPage,
+    totalPages,
+    inputPage,
+    setCurrentPage,
+    setInputPage
+  );
 
   return (
     <section className={styles.latestSets}>

@@ -5,11 +5,8 @@ import { useEffect, useState, useRef, useCallback, LegacyRef } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { fetchFromApi } from '@/utils/api';
-import {
-  Card as PokemonCard,
-  CardsResponse,
-} from '@/app/_components/sets/types';
-import Card from '@/app/_components/card';
+import { Card as PokemonCard, CardsResponse } from '@/_components/sets/types';
+import Card from '@/_components/card';
 import { ClipLoader } from 'react-spinners';
 import styles from './styles.module.css'; // Import CSS module
 

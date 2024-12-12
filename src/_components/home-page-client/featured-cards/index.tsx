@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Card from '../../card';
 import styles from './styles.module.css'; // Import CSS module
+import { useFeaturedCards } from './hooks';
 
 interface FeaturedCardsProps {
   selectedSet: PokemonSet | null;
@@ -32,37 +33,20 @@ const FeaturedCards: React.FC<FeaturedCardsProps> = ({
   setInputFeaturedPage,
   fetchFeaturedCards,
 }) => {
-  const handleFeaturedPageInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setInputFeaturedPage(event.target.value);
-  };
-
-  const handleFeaturedPageInputBlur = () => {
-    const page = Number(inputFeaturedPage);
-    if (page > 0 && page <= totalFeaturedPages) {
-      setCurrentFeaturedPage(page);
-      fetchFeaturedCards(selectedSet!.id, page);
-    } else {
-      setInputFeaturedPage(currentFeaturedPage.toString());
-    }
-  };
-
-  const handlePrevFeaturedPage = () => {
-    if (currentFeaturedPage > 1) {
-      setCurrentFeaturedPage(currentFeaturedPage - 1);
-      setInputFeaturedPage((currentFeaturedPage - 1).toString());
-      fetchFeaturedCards(selectedSet!.id, currentFeaturedPage - 1);
-    }
-  };
-
-  const handleNextFeaturedPage = () => {
-    if (currentFeaturedPage < totalFeaturedPages) {
-      setCurrentFeaturedPage(currentFeaturedPage + 1);
-      setInputFeaturedPage((currentFeaturedPage + 1).toString());
-      fetchFeaturedCards(selectedSet!.id, currentFeaturedPage + 1);
-    }
-  };
+  const {
+    handleFeaturedPageInputChange,
+    handleFeaturedPageInputBlur,
+    handlePrevFeaturedPage,
+    handleNextFeaturedPage,
+  } = useFeaturedCards(
+    selectedSet,
+    currentFeaturedPage,
+    totalFeaturedPages,
+    inputFeaturedPage,
+    setCurrentFeaturedPage,
+    setInputFeaturedPage,
+    fetchFeaturedCards
+  );
 
   return (
     <section className={styles.featuredCards}>
@@ -85,7 +69,7 @@ const FeaturedCards: React.FC<FeaturedCardsProps> = ({
                 altText={card.name}
                 cardName={card.name}
                 averageSellPrice={card.cardmarket?.prices?.averageSellPrice}
-                marketUrl={card.cardmarket.url} // Pass market URL prop
+                marketUrl={card.cardmarket?.url} // Pass market URL prop
               />
             ))}
           </div>
